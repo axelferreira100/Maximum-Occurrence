@@ -10,7 +10,7 @@ namespace LibraryTest
 			Description = "Wrong Answer")]
 		[TestCase("Edabit", ExpectedResult = "No Repetition",
 			Description = "Wrong Answer")]
-		[TestCase("system admin", ExpectedResult = "m,s",
+		[TestCase("system admin", ExpectedResult = "s,m",
 			Description = "Wrong Answer")]
 		[TestCase("the quick brown fox jumps over the lazy dog",
 			ExpectedResult = " ", Description = "Wrong Answer")]

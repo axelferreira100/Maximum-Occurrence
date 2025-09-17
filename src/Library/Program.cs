@@ -8,24 +8,43 @@ namespace Library
         public static string MaxOccur(string text)
         {
             Dictionary<char, int> charactersCounter = new Dictionary<char, int>();
-            string[] listOfWordsInText = text.Split(" ");
+            string lettersWithBiggestFrequency = "";
 
-            foreach (string word in listOfWordsInText)
+            foreach (char character in text)
             {
-                foreach (char character in word)
+                if (!charactersCounter.ContainsKey(character))
                 {
-                    if (!charactersCounter.ContainsKey(character))
+                    charactersCounter.Add(character, 1);
+                }
+                else
+                {
+                    charactersCounter[character]++;
+                }
+            }
+
+            int maxValue = charactersCounter.Values.Max();
+
+            if (maxValue == 1)
+            {
+                return "No Repetition";
+            }
+
+            foreach (KeyValuePair<char, int> kvp in charactersCounter)
+            {
+                if (kvp.Value == maxValue)
+                {
+                    if (lettersWithBiggestFrequency == "")
                     {
-                        charactersCounter.Add(character, 1);
+                        lettersWithBiggestFrequency += kvp.Key;
                     }
                     else
                     {
-                        charactersCounter[character]++;
+                        lettersWithBiggestFrequency += "," + kvp.Key;
                     }
                 }
             }
-            
-            
+
+            return lettersWithBiggestFrequency;
         }
     }
 }
